@@ -10,14 +10,18 @@
 
 const firstName = 'Chelsy';
 const lastName = 'Emerald';
+
+const fullName = firstName + ' ' + lastName + ' ' + '😎';
 // console.log(fullName);
 
 const quantity = 15;
-const orderMsg = 'You ordered ??? bots';
+// const orderMsg = 'You ordered' + ' ' + quantity + ' ' + 'bots';
+// const orderMsg = `You ordered ${prompt('Enter bots quantity')} bots`;
 // console.log(orderMsg);
 
-const message = 'This string is 28 chars long';
+const message = '             This string is 28 chars long           ';
 // console.log(message);
+// console.log(message.length);
 
 /**
  * Склади фразу за допомогою шаблонних рядків
@@ -26,5 +30,7 @@ const message = 'This string is 28 chars long';
 const companyName = 'Cyberdyne Systems';
 const repairBots = 150;
 const defenceBots = 50;
-// const msg = ;
-// console.log(msg); // "Cyberdyne Systems has 200 bots in stock"
+
+const msg = `${companyName} has ${repairBots + defenceBots} bots in stock`;
+
+console.log(msg); // "Cyberdyne Systems has 200 bots in stock"
