@@ -4,13 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Branching</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
   </head>
   <body>
+    <section class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-3"></div>
+          <div class="col col-lg-6">
+            <select class="form-select" id="deliveryOption">
+              <option></option>
+              <option value="1" selected>Самовивіз</option>
+              <option value="2">Курʼєр</option>
+              <option value="3">Пошта</option>
+            </select>
+          </div>
+          <div class="col col-lg-3"></div>
+        </div>
+        <div class="row">
+          <p class="display-5 py-4 text-center" id="output">Some text...</p>
+        </div>
+      </div>
+    </section>
+
     <!-- <script type="module" src="./js/01-branching.js"></script> -->
     <!-- <script type="module" src="./js/02-scope.js"></script> -->
     <!-- <script type="module" src="./js/03-tasks.js"></script> -->
     <!-- <script type="module" src="./js/04-switch.js"></script> -->
-    <!-- <script type="module" src="./js/05-operators.js"></script> -->
+    <script type="module" src="./js/05-operators.js"></script>
     <!-- <script type="module" src="./js/06-tasks.js"></script> -->
   </body>
 </html>

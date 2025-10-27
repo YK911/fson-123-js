@@ -2,7 +2,25 @@
  * Оператор switch
  */
 
-const username = 'Mango';
+const username = 'manGo';
+
+// switch (username) {
+//   case 'Mango': // 'Mango' === 'mango'
+//   case 'mango': // 'mango' === 'manGo'
+//     console.log('case 1');
+//     break;
+
+//   case 'Poly':
+//     console.log('case 2');
+//     break;
+
+//   case 'Ajax':
+//     console.log('case 3');
+//     break;
+
+//   default:
+//     console.log('Unknown case');
+// }
 
 /**
  * Виконай рефакторинг коду задачі використовуючи switch.
@@ -15,15 +33,22 @@ const username = 'Mango';
 
 const daysUntilDeadline = 5;
 
-if (daysUntilDeadline === 0) {
-  console.log('Today');
-} else if (daysUntilDeadline === 1) {
-  console.log('Tomorrow');
-} else if (daysUntilDeadline === 2) {
-  console.log('Overmorrow');
-} else {
-  console.log('Date in the future');
-}
+// switch (daysUntilDeadline) {
+//   case 0: // daysUntilDeadline === 0
+//     console.log('Today');
+//     break;
+
+//   case 1: // daysUntilDeadline === 1
+//     console.log('Tomorrow');
+//     break;
+
+//   case 2: // daysUntilDeadline === 2
+//     console.log('Overmorrow');
+//     break;
+
+//   default:
+//     console.log('Date in the future');
+// }
 
 /**
  * Напиши скрипт вибору опції доставки товару.
@@ -36,7 +61,67 @@ if (daysUntilDeadline === 0) {
  * - 'Вам зателефонує менеджер'
  */
 
-const option = 1;
-let message = '';
+function initSelect(selector = '') {
+  if (selector.length === 0) {
+    console.warn('Select HTML element');
+    return;
+  }
+
+  handleSelect(null, selector);
+}
+
+function handleSelect(event, element = null) {
+  let selectEl;
+
+  if (element || !event) {
+    selectEl = element;
+  } else {
+    selectEl = event.target;
+  }
+
+  const option = Number(selectEl.selectedOptions[0].value);
+
+  switch (option) {
+    case 1:
+      output.textContent =
+        'Ви зможете забрати товар завтра з 12:00 в нашому офісі';
+      break;
+
+    case 2:
+      output.textContent = 'Курʼєр доставить замовлення завтра з 9:00 до 18:00';
+      break;
+
+    case 3:
+      output.textContent = 'Пакунок буде відправлено сьогодні';
+      break;
+
+    default:
+      output.textContent = 'Вам зателефонує менеджер';
+  }
+}
+
+initSelect(deliveryOption);
+
+deliveryOption.onchange = handleSelect;
+
+// const option = 123.1;
+// let message = '';
+
+// switch (option) {
+//   case 1:
+//     message = 'Ви зможете забрати товар завтра з 12:00 в нашому офісі';
+//     break;
+
+//   case 2:
+//     message = 'Курʼєр доставить замовлення завтра з 9:00 до 18:00';
+//     break;
+
+//   case 3:
+//     message = 'Пакунок буде відправлено сьогодні';
+//     break;
+
+//   default:
+//     message = 'Вам зателефонує менеджер';
+// }
 
 // console.log(message);
