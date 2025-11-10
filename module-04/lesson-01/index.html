@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      #output {
+        padding: 8px 16px;
+        border: 1px solid rebeccapurple;
+        border-radius: 8px;
+        color: rebeccapurple;
+
+        span {
+          color: tomato;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p>Choose option:</p>
+
+    <form name="color">
+      <label>
+        <input type="radio" name="property" value="color" />
+        <span>Color</span>
+      </label>
+      <label>
+        <input type="radio" name="property" value="backgroundColor" />
+        <span>Background Color</span>
+      </label>
+      <label>
+        <input type="radio" name="property" value="borderColor" />
+        <span>Border Color</span>
+      </label>
+    </form>
+
+    <div id="output">Option value: <span>?</span></div>
+
+    <!-- <script type="module" src="./js/01-objects.js"></script> -->
+    <!-- <script type="module" src="./js/02-refs.js"></script> -->
+    <!-- <script type="module" src="./js/03-props.js"></script> -->
+    <!-- <script type="module" src="./js/04-iteration.js"></script> -->
+    <!-- <script type="module" src="./js/05-tasks.js"></script> -->
+  </body>
+</html>
