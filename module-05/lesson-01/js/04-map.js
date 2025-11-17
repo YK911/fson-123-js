@@ -17,23 +17,38 @@ const allCars = [
   { make: 'Ford', model: 'Fusion', amount: 13, price: 22120 },
   { make: 'Ford', model: 'Explorer', amount: 6, price: 31660 },
 ];
-
+// console.table(allCars);
 /**
  * Нехай функція getModels повертає масив моделей (поле model) всіх автомобілів.
  */
 
-const getModels = cars => {};
+const getModels = cars => {
+  return cars.map((car, idx, arr) => {
+    return car.model;
+  });
+};
 
-// console.table(getModels(allCars));
+const models = getModels(allCars);
+// console.table(models);
 
 /**
  * Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінним
  * значенням властивості price залежно від переданої знижки.
  */
 
-const makeCarsWithDiscount = (cars, discount) => {};
+const makeCarsWithDiscount = (cars, discount) => {
+  return cars.map((car, idx, arr) => {
+    // car.price = car.price - car.price * discount; // ❌ не мутуємо оригільні обʼєкти за посиланням
 
-// console.table(makeCarsWithDiscount(allCars, 0.2));
+    return {
+      ...car,
+      price: car.price - car.price * discount,
+    };
+  });
+};
+
+// const discount20 = makeCarsWithDiscount(allCars, 0.2);
+// console.table(discount20);
 // console.table(makeCarsWithDiscount(allCars, 0.4));
 
 const players = [
@@ -43,7 +58,7 @@ const players = [
   { id: 'player-4', name: 'Ajax', timePlayed: 150, points: 71, online: false },
   { id: 'player-5', name: 'Chelsy', timePlayed: 80, points: 48, online: true },
 ];
-// console.table(players);
+console.table(players);
 
 /**
  * Збільшуємо кількість годин гравця за id
@@ -51,6 +66,17 @@ const players = [
 
 const playerIdToUpdate = 'player-3';
 
-const updatedPlayers = players.map(player => {});
+const updatedPlayers = players.map((player, idx, arr) => {
+  if (player.id === playerIdToUpdate) {
+    return {
+      ...player,
+      timePlayed: player.timePlayed + 70,
+    };
+  }
 
-// console.log(updatedPlayers);
+  return {
+    ...player,
+  };
+});
+
+// console.table(updatedPlayers);

@@ -10,10 +10,22 @@ function add(a, b, c) {
   return a + b + c;
 }
 
-// const addArrow =
+// () => {};
+
+// ? Function expression
+// const addArrow = (a, b, c) => {
+const addArrow = (a, b, ...args) => {
+  // console.log(arguments);
+  console.log(args);
+
+  // return args;
+};
+
+// ? Implicite return
+// const addArrow = (a, b, c) => a + b + c;
 
 // console.log(add(5, 10, 15));
-// console.log(addArrow(5, 10, 15));
+// console.log(addArrow(5, 10, 15, 'asd', false, { one: 'one' }));
 
 /**
  * ---------------------------
@@ -26,7 +38,7 @@ function fnA() {
 
 // console.log(fnA());
 
-// const arrowFnA =
+const arrowFnA = () => ({ a: 5 });
 
 // console.log(arrowFnA());
 
@@ -39,10 +51,14 @@ function calc(a, b, callback) {
   console.log(result);
 }
 
-// calc(2, 3, function (x, y) {
-//   return x + y;
-// });
+calc(2, 3, function (x, y) {
+  return x + y;
+});
+calc(2, 3, (x, y) => x + y);
 
-// calc(10, 8, function (x, y) {
-//   return x - y;
-// });
+// ==========================
+
+calc(10, 8, function (x, y) {
+  return x - y;
+});
+calc(10, 8, (x, y) => x - y);
