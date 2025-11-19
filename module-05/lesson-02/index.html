@@ -4,13 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Array methods</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #24272b;
+      }
+      [name='registerForm'] {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 10px;
+
+        label {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          color: white;
+
+          input {
+            height: 36px;
+            border-radius: 10px;
+          }
+        }
+
+        button {
+          min-height: 36px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+      }
+    </style>
   </head>
   <body>
+    <form name="registerForm">
+      <label>
+        Name
+        <input type="text" name="userName" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="userEmail" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="userPassword" />
+      </label>
+      <button type="submit">Register</button>
+    </form>
+
     <!-- <script type="module" src="./js/01-filter.js"></script> -->
     <!-- <script type="module" src="./js/02-find.js"></script> -->
     <!-- <script type="module" src="./js/03-every-some.js"></script> -->
     <!-- <script type="module" src="./js/04-reduce.js"></script> -->
     <!-- <script type="module" src="./js/05-sort.js"></script> -->
-    <!-- <script type="module" src="./js/06-chaining.js"></script> -->
+    <script type="module" src="./js/06-chaining.js"></script>
   </body>
 </html>

@@ -10,8 +10,18 @@
 
 const numbers = [5, 10, 15, 20, 25];
 
-const filteredNumbers = numbers;
-console.log(filteredNumbers);
+const filteredNumbers = numbers.filter((item, idx, arr) => {
+  return item > 11;
+});
+// console.log(filteredNumbers);
+
+const litrNumbers = numbers.filter((number, idx, arr) => {
+  return number !== 15;
+});
+// console.log('🚀 ~ litrNumbers:', litrNumbers);
+
+const filtered = numbers.filter(number => number <= 10);
+// console.log('🚀 ~ filtered:', filtered);
 
 /**
  * ---------------------------
@@ -98,13 +108,21 @@ const allCars = [
     onSale: false,
   },
 ];
+console.table(allCars);
 
 /**
  * Нехай функція filterByPrice повертає масив автомобілів ціна яких менша ніж
  * значення параметра threshold.
  */
 
-const filterByPrice = (cars, threshold) => {};
+const filterByPrice = (cars, threshold) => {
+  return cars.filter(car => {
+    return car.price < threshold;
+  });
+};
+
+// const filterByPrice = (cars, threshold) =>
+//   cars.filter(car => car.price < threshold);
 
 // console.table(filterByPrice(allCars, 30000));
 // console.table(filterByPrice(allCars, 25000));
@@ -114,7 +132,11 @@ const filterByPrice = (cars, threshold) => {};
  * властивість onSale яких true.
  */
 
-const getCarsWithDiscount = cars => {};
+const getCarsWithDiscount = cars => {
+  return cars.filter(car => {
+    return car.onSale;
+  });
+};
 
 // console.table(getCarsWithDiscount(allCars));
 
@@ -123,7 +145,11 @@ const getCarsWithDiscount = cars => {};
  * зі значенням параметра type.
  */
 
-const getCarsWithType = (cars, type) => {};
+const getCarsWithType = (cars, type) => {
+  return cars.filter(car => {
+    return car.type === type;
+  });
+};
 
-// console.table(getCarsWithType(allCars, "suv"));
-// console.table(getCarsWithType(allCars, "sedan"));
+// console.table(getCarsWithType(allCars, 'suv'));
+// console.table(getCarsWithType(allCars, 'sedan'));
