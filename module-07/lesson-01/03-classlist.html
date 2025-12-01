@@ -11,15 +11,23 @@
 
     <ul class="site-nav">
       <li class="site-nav__item">
-        <a href="/about" class="site-nav__link">About</a>
+        <a href="/about" class="site-nav__link active">About</a>
       </li>
       <li class="site-nav__item">
-        <a href="/portfolio" class="site-nav__link">Portfolio</a>
+        <a href="/portfolio" class="site-nav__link linethrough">Portfolio</a>
       </li>
       <li class="site-nav__item">
-        <a href="/contact" class="site-nav__link">Contacts</a>
+        <a href="/contacts" class="site-nav__link">Contacts</a>
       </li>
     </ul>
+
+    <div class="backdrop is-hidden">
+      <div class="modal">
+        <button>X</button>
+      </div>
+    </div>
+
+    <button data-modal-open>Modal open</button>
 
     <script src="./js/03-classlist.js"></script>
   </body>

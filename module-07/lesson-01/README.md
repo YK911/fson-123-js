@@ -7,7 +7,7 @@
    - JavaScript у браузері
    - HTML-документ і DOM,
    - DOM-дерево
-   - Пошук елементів з використанням querySelector ы querySelectorAll
+   - Пошук елементів з використанням querySelector та querySelectorAll
      (01-selectors.js)
 
 3. Розберемо властивості та атрибути (02-properties.js)
