@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Search</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
+    <!-- <link rel="stylesheet" href="./css/modal.css" /> -->
   </head>
-  <body>
+  <body class="container">
     <p><a href="index.html">Go back</a></p>
 
-    <form action="submit" class="js-form car-search">
-      <div class="car-group">
-        <input type="text" name="query" class="car-input" placeholder="Пошук" />
+    <form class="js-form car-search mb-5">
+      <div class="row mb-3">
+        <div class="col car-group">
+          <input
+            type="text"
+            class="form-control"
+            name="query"
+            placeholder="Пошук"
+          />
+        </div>
+        <div class="col car-group">
+          <select class="form-select" name="options">
+            <option value="car">Марка</option>
+            <option value="type">Модель</option>
+          </select>
+        </div>
       </div>
-      <div class="car-group">
-        <select name="options" class="car-select">
-          <option value="car">Марка</option>
-          <option value="type">Модель</option>
-        </select>
-      </div>
-      <button class="car-button">Пошук</button>
+      <button class="btn btn-primary">Пошук</button>
     </form>
 
     <ul class="js-list car-list"></ul>

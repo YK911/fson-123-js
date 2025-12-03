@@ -36,7 +36,7 @@ input {
   width: 300px;
   height: 300px;
   background-color: #3f51b5;
-  transition: background-color 200ms ease-in;
+  transition: 200ms ease-in;
 }
 
 .box--active {
@@ -47,4 +47,16 @@ input {
   width: 100px;
   height: 100px;
   background-color: #ffc107;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
