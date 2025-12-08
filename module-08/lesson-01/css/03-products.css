@@ -5,9 +5,12 @@ ul {
   gap: 25px;
   user-select: none;
   list-style: none;
+  padding: 0;
+  outline: 2px solid red;
+  outline-offset: -2px;
 }
 
-.item {
+.products-item {
   list-style: none;
   width: 250px;
   padding: 20px;
@@ -17,19 +20,19 @@ ul {
   margin: 10px;
 }
 
-.item img {
-  width: 250px;
-  height: 300px;
+.products-img {
+  max-width: 250px;
+  height: auto;
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-.item h2 {
+.products-title {
   font-size: 1.2rem;
   margin: 0;
 }
 
-.item p {
+.products-price {
   font-size: 1rem;
   margin: 5px 0;
 }

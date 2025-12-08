@@ -1,6 +1,9 @@
 .container {
   display: flex;
   justify-content: space-around;
+
+  outline: 2px solid red;
+  outline-offset: -2px;
 }
 
 .box {
@@ -20,4 +23,17 @@
   &.violet {
     background-color: darkslateblue;
   }
+}
+
+.outut {
+  max-width: 200px;
+  min-height: 80px;
+  margin: 50px auto 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: darkmagenta;
+  color: white;
+  text-align: center;
+
+  font-size: 42px;
 }

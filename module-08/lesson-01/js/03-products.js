@@ -67,3 +67,64 @@ const products = [
 ];
 
 const container = document.querySelector('.products');
+const modalTemlate = document.querySelector('#js-modal-template');
+let instance = null;
+
+const createProductsMarkup = products => {
+  return products
+    .map(product => {
+      return `<li class="products-item" id="${product.id}">
+        <img class="products-img" src="${product.thumbnail}" alt="${product.title}" />
+        <h2 class="products-title">${product.title}</h2>
+        <p class="products-price">$ ${product.price}</p>
+      </li>`;
+    })
+    .join('');
+};
+
+const handleEscapeClick = event => {
+  if (event.code === 'Escape') {
+    instance.close(() => {
+      document.removeEventListener('keydown', handleEscapeClick);
+    });
+  }
+  // console.log('clicks');
+};
+
+const handleItemClick = event => {
+  const targetEl = event.target;
+  if (targetEl.classList.contains('products')) {
+    console.log('Stop');
+    return;
+  }
+
+  const itemEl = targetEl.closest('.products-item');
+
+  const product = products.find(product => product.id === Number(itemEl.id));
+  // console.log('product', product);
+
+  // ? Отримання вмісту шаблону
+  // const res = modalTemlate.content.cloneNode(true);
+  // console.log('🚀 ~ handleItemClick ~ res:', res);
+
+  const modalMarkup = `
+    <div class="modal">
+        <img
+          src="${product.thumbnail}"
+          alt="${product.title}"
+        />
+        <h2>${product.title}</h2>
+        <h3>Price: $ ${product.price}</h3>
+        <p>${product.description}</p>
+      </div>
+    `;
+
+  instance = basicLightbox.create(modalMarkup);
+
+  instance.show(() => {
+    document.addEventListener('keydown', handleEscapeClick);
+  });
+};
+
+container.insertAdjacentHTML('beforeend', createProductsMarkup(products));
+container.addEventListener('click', handleItemClick);
