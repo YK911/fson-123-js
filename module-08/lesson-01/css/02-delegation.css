@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.box {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  &.red {
+    background-color: tomato;
+  }
+
+  &.green {
+    background-color: teal;
+  }
+
+  &.violet {
+    background-color: darkslateblue;
+  }
+}
