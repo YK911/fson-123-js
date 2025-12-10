@@ -91,6 +91,20 @@ const handleEscapeClick = event => {
   // console.log('clicks');
 };
 
+const populateModal = (element, { title: caption }) => {
+  const img = element.querySelector('img');
+  img.src = data.thumbnail;
+  img.alt = data.title;
+  const title = element.querySelector('h2');
+  title.textContent = caption;
+  const subtitle = element.querySelector('h3');
+  subtitle.textContent = data.price;
+  const desc = element.querySelector('p');
+  desc.textContent = data.description;
+
+  return element;
+};
+
 const handleItemClick = event => {
   const targetEl = event.target;
   if (targetEl.classList.contains('products')) {
@@ -104,8 +118,10 @@ const handleItemClick = event => {
   // console.log('product', product);
 
   // ? Отримання вмісту шаблону
-  // const res = modalTemlate.content.cloneNode(true);
-  // console.log('🚀 ~ handleItemClick ~ res:', res);
+  const cloneEl = modalTemlate.content.cloneNode(true);
+  // console.log('🚀 ~ handleItemClick', cloneEl);
+  const populatedModal = populateModal(cloneEl, product);
+  console.log('🚀 ~ handleItemClick:', populatedModal);
 
   const modalMarkup = `
     <div class="modal">

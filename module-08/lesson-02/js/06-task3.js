@@ -5,10 +5,9 @@
  * Функція повинна розрахувати та повернути периметр будинку.
  */
 
-function calculateHousePerimeter(a, b, c, d) {
-  const perimeter = a + b + c + d;
-  return perimeter;
+function calculateHousePerimeter({ a, b, c, d } = {}) {
+  return a + b + c + d;
 }
 
-// const perimeter = calculateHousePerimeter(10, 15, 10, 15);
-// console.log(`Периметр будинку: ${perimeter}`);
+const perimeter = calculateHousePerimeter({ a: 10, b: 15, c: 10, d: 15 });
+console.log(`Периметр будинку: ${perimeter}`);
