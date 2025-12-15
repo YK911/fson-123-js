@@ -1,0 +1,10 @@
+{
+  "key1": "Mango",
+  "key2": 2,
+  "key3": true,
+  "key4": ["value1", "value2", "value3", "value4"],
+  "key5": {
+    "innerKey": "mango@mail.com"
+  },
+  "key6": null
+}
