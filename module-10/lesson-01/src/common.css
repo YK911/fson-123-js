@@ -99,6 +99,10 @@ img {
     visibility: visible;
     opacity: 1;
   }
+
+  &:hover {
+    cursor: progress;
+  }
 }
 /* #endregion */
 

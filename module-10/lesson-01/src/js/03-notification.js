@@ -10,23 +10,34 @@ import '../common.css';
 const NOTIFICATION_DELAY = 3000;
 let timeoutId = null;
 const notification = document.querySelector('.js-alert');
+const btnEl = document.querySelector('button');
 
 showNotification();
+notification.addEventListener('click', onNotificationClick);
+btnEl.addEventListener('click', showNotificationId);
 
-/*
+/**
  * Функції
  */
-function onNotificationClick() {}
+function onNotificationClick() {
+  if (!timeoutId) {
+    return;
+  }
+  hideNotification();
+  clearTimeout(timeoutId);
+  console.log(timeoutId);
+}
 
 function showNotification() {
   notification.classList.add('is-visible');
 
-  setTimeout(() => {
-    notification.classList.remove('is-visible');
-  }, NOTIFICATION_DELAY);
-  console.log(
-    'Закриваємо сповіщення автоматично, щоб воно не залишалося відкритим'
-  );
+  timeoutId = setTimeout(hideNotification, NOTIFICATION_DELAY);
 }
 
-function hideNotification() {}
+function hideNotification() {
+  notification.classList.remove('is-visible');
+}
+
+function showNotificationId() {
+  console.log(timeoutId);
+}
