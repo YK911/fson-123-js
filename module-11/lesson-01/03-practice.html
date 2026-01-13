@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <p><a href="index.html" class="back-link">← Go Back</a></p>
+
+    <form class="search-form">
+      <div class="form-group">
+        <label for="searchQuery">Пошук товарів</label>
+        <input
+          type="text"
+          id="searchQuery"
+          name="query"
+          placeholder="Введіть назву товара..."
+        />
+        <small class="help-text">Наприклад: phone, watch, laptop...</small>
+      </div>
+      <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div class="card-container"></div>
+
+    <script src="src/js/03-practice.js" type="module"></script>
+  </body>
+</html>
