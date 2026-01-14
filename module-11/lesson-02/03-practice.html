@@ -16,13 +16,13 @@
         <div class="form-group">
           <label for="breed-input">Оберіть породу кота:</label>
           <input
+            class="input-field"
             list="breeds-list"
             id="breed-input"
-            class="input-field"
             placeholder="Наприклад: Bengal"
             autocomplete="off"
           />
-          <datalist id="breeds-list"></datalist>
+          <datalist id="breeds-list"> </datalist>
         </div>
 
         <button type="submit" class="btn">Знайти зображення</button>
@@ -38,5 +38,14 @@
     <div id="cat-card" class="card-container"></div>
 
     <script src="src/js/03-practice.js" type="module"></script>
+
+    <template>
+      <div class="card">
+        <img class="card-image" src="" alt="" />
+        <div class="card-body">
+          <h2 class="card-title"></h2>
+        </div>
+      </div>
+    </template>
   </body>
 </html>
