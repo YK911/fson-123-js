@@ -1,55 +1,161 @@
 import axios from 'axios';
+
+// ? Project styles
 import '../common.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
- * Використовуємо https://pokeapi.co/ та створимо сторінку перегляду покемонів
+ * Використовуємо https://dummyjson.com/docs/recipes та створимо сторінку перегляду рецептів
  *
  * Переписуємо на async/await
  */
 
-function fetchPokemon(pokemonId) {
-  return axios
-    .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-    .then(response => response.data);
-}
+const recipesContainerEl = document.querySelector('[data-container="recipes"]');
+const categoryEl = document.querySelector('[data-container="recipes"]');
+const searchForm = document.querySelector('#searchForm');
 
-const cardContainer = document.querySelector('.card-container');
-const searchForm = document.querySelector('.search-form');
+const RESIPES_URL = 'https://dummyjson.com/recipes?limit=8';
+const SEARCH_URL = 'https://dummyjson.com/recipes/search';
+const MEALTYPE_URL = 'https://dummyjson.com/recipes/meal-type/';
 
-searchForm.addEventListener('submit', onSearch);
+const showError = error => {
+  console.log(error.message);
+};
 
-function onSearch(e) {
-  e.preventDefault();
+const fetchRecipes = async () => {
+  const recipesData = await axios.get(RESIPES_URL);
+  const {
+    data: { recipes },
+  } = recipesData;
 
-  const form = e.currentTarget;
-  const searchQuery = form.elements.query.value.toLowerCase();
+  return recipes;
+};
+const searchRecipes = async (query = '') => {
+  const response = await axios.get(SEARCH_URL, {
+    params: {
+      q: query,
+    },
+  });
 
-  fetchPokemon(searchQuery)
-    .then(renderPokemonCard)
-    .catch(onFetchError)
-    .finally(() => form.reset());
-}
+  if (response.data.total === 0) {
+    throw new Error('❌ No recipes found');
+  }
 
-function renderPokemonCard({ name, sprites, weight, height, abilities }) {
-  const abilityListItems = abilities
-    .map(item => `<li class="list-group-item">${item.ability.name}</li>`)
+  return response.data.recipes;
+};
+const searchRecipesByCategory = async (category = '') => {
+  const response = await axios.get(`${SEARCH_URL}+${category}`);
+
+  if (response.data.total === 0) {
+    throw new Error('❌ No recipes found');
+  }
+
+  return response.data.recipes;
+};
+
+const createRecipesMarkup = (recipes = []) => {
+  let firstPart = null;
+  let secondPart = null;
+  if (recipes.length > 4) {
+    firstPart = recipes.slice(0, 4);
+    secondPart = recipes.slice(4);
+  } else {
+    firstPart = recipes;
+  }
+
+  const markup1 = firstPart
+    .map(({ id, image, name, cookTimeMinutes, caloriesPerServing }) => {
+      return `
+      <div class="col">
+        <div class="card" id="${id}">
+          <img class="card-img-top" src="${image}"  alt="${name}">
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">${name}</h5>
+              <p>${cookTimeMinutes}</p>
+            </div>
+            <small>~ ${caloriesPerServing} cals</small>
+            <button class="btn btn-primary" type="button">Learn more</button>
+          </div>
+        </div>
+      </div>
+    `;
+    })
     .join('');
 
-  const markup = `<div class="pokemon-card">
-  <img src="${sprites.front_default}" class="pokemon-image" alt="${name}" >
+  const markup2 = secondPart
+    ? secondPart
+        .map(({ id, image, name, cookTimeMinutes, caloriesPerServing }) => {
+          return `
+      <div class="col">
+        <div class="card" id="${id}">
+          <img class="card-img-top" src="${image}"  alt="${name}">
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">${name}</h5>
+              <p>${cookTimeMinutes}</p>
+            </div>
+            <small>~ ${caloriesPerServing} cals</small>
+            <button class="btn btn-primary" type="button">Learn more</button>
+          </div>
+        </div>
+      </div>
+    `;
+        })
+        .join('')
+    : '';
 
-  <div class="pokemon-info">
-    <h2 class="pokemon-title">${name}</h2>
-    <p><span class="bold-text">Вага:</span> ${weight}</p>
-    <p><span class="bold-text">Зростання:</span> ${height}</p>
-    <h5 class="abilities-title">Уміння</h5>
-    <ul class="abilities-list">${abilityListItems}</ul>
-  </div>
-</div>`;
+  return [markup1, markup2];
+};
 
-  cardContainer.innerHTML = markup;
-}
+const onSearchSubmit = event => {
+  event.preventDefault();
+  const form = event.target;
 
-function onFetchError(error) {
-  alert('Упс, щось пішло не так і ми не знайшли вашого покемона!');
-}
+  const { searchQuery } = form.elements;
+
+  if (searchQuery.value.trim() === '') {
+    console.log('Empty input');
+    return;
+  }
+
+  searchRecipes(searchQuery.value)
+    .then(recipes => {
+      console.log(recipes);
+      recipesContainerEl.innerHTML = '';
+
+      recipesContainerEl.insertAdjacentHTML(
+        'beforeend',
+        createRecipesMarkup(recipes)
+      );
+    })
+    .catch(error => {
+      showError(error);
+    })
+    .finally(() => {
+      form.reset();
+    });
+};
+const onCategoryChange = () => {};
+
+const init = async () => {
+  recipesContainerEl.innerHTML = '';
+  try {
+    const recipes = await fetchRecipes();
+    const markup = createRecipesMarkup(recipes);
+
+    const cardSet = markup
+      .map(item => `<div class="row">${item}</div>`)
+      .join('');
+
+    recipesContainerEl.insertAdjacentHTML('beforeend', cardSet);
+  } catch (error) {
+    showError();
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+});
+searchForm.addEventListener('submit', onSearchSubmit);
+categoryEl.addEventListener('change', onCategoryChange);

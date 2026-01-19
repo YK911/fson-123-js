@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,28 +6,69 @@
     <title>Practice</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="p-0">
     <p>
       <a href="index.html" class="back-link">← Go Back</a>
     </p>
 
-    <form class="search-form">
-      <div class="form-group">
-        <label for="searchQuery">Пошук Покемона</label>
-        <input
-          type="text"
-          id="searchQuery"
-          name="query"
-          placeholder="Введіть ім'я покемона..."
-        />
-        <small class="help-text"
-          >Наприклад: Ditto, Bulbasaur, Charmeleon, Psyduck, Persian</small
+    <header class="bg-dark py-2">
+      <div class="container d-flex">
+        <nav
+          class="d-flex align-items-center flex-grow-1 justify-content-between"
         >
+          <a class="d-flex align-items-center text-white mx-3">
+            <img src="src/img/logo.svg" alt="Tasteorama Logo" />
+            Tasteorama
+          </a>
+          <a class="text-white mx-3" href="#recipes">Recipes</a>
+        </nav>
+        <div class="d-flex ms-auto">
+          <button class="btn text-white mx-1" type="button">Log in</button>
+          <button class="btn btn-primary" type="button">Register</button>
+        </div>
       </div>
-      <button type="submit" class="btn">Search</button>
-    </form>
+    </header>
 
-    <div class="card-container"></div>
+    <main>
+      <section class="py-5">
+        <div class="container">
+          <h1 class="display-5 fw-bold" style="max-width: 450px">
+            Plan, Cook, and Share Your Flavors
+          </h1>
+
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+
+          <form class="row g-3" id="searchForm">
+            <div class="col-auto">
+              <label for="searchQuery" class="visually-hidden"> Search </label>
+              <input
+                class="form-control"
+                type="search"
+                id="searchQuery"
+                name="searchQuery"
+                placeholder="Search recipes"
+              />
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">Search</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="py-5">
+        <div class="container">
+          <h2>Recepies</h2>
+
+          <div class="row" data-container="recipes"></div>
+        </div>
+      </section>
+    </main>
 
     <script src="src/js/03-practice.js" type="module"></script>
   </body>

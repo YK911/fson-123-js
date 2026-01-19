@@ -1,16 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Синтаксис async/await</title>
+
+    <style>
+      .modal {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 200px;
+        min-height: 40px;
+        padding: 10px;
+
+        color: white;
+        background-color: rgba(255, 0, 0, 0.4);
+        border-radius: 10px;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: 200ms;
+      }
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: initial;
+      }
+    </style>
   </head>
   <body>
     <p>
       <a href="index.html"> ← Go Back </a>
     </p>
 
+    <h1>Output: <span></span></h1>
+
+    <div class="modal">Some error</div>
+
+    <!-- <script>
+      const TODO_URL = 'https://jsonplaceholder.typicode.com/todos';
+      const todoResponse = await axios.get(TODO_URL);
+      console.log("🚀 ~ todoResponse:", todoResponse)
+    </script> -->
     <script src="src/js/02-async.js" type="module"></script>
   </body>
 </html>
