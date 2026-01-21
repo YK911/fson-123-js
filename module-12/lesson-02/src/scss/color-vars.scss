@@ -1,0 +1,43 @@
+// --- Base Colors (From Figma Mode 1) ---
+
+// Neutrals: White & Black
+$white: #ffffff;
+$black: #000000;
+$black-2: #070707; // Extra dark, almost black
+
+// Neutrals: Grays
+$gray: #595d62;
+$gray-2: #575757;
+$gray-3: #9f9f9f;
+$light-gray: #d9d9d9;
+$light-gray-2: #d3d3d3;
+$light-gray-3: #c5c5c5;
+$dark-gray: #323232; // Figma: "darck gray"
+$icon-gray: #3a3a3a;
+
+// Brand Colors: Browns & Beiges
+$brown: #6d554b;
+$dark-brown: #3d2218; // Figma: "Darck brown"
+$light-brown: #9b6c43;
+
+$beige: #e3caa5;
+$beige-2: #edd9aa;
+$light-beige: #faf3e0;
+$light-beige-2: #fffbe9;
+$light-beige-3: #e1d7c6;
+
+// Accents & Backgrounds
+$red: #c80000;
+$background: #fbfcf8; // Off-white background
+
+// --- Transparent Colors (RGBA) ---
+// Використовуємо функцію rgba для збереження прозорості з Figma
+
+$white-55: rgba($white, 0.55);
+$white-80: rgba($white, 0.8);
+$black-50: rgba($black, 0.5);
+$black-60: rgba($black, 0.6);
+$dark-brown-65: rgba($dark-brown, 0.65);
+
+// Social media placeholder (Alpha 0 in Figma)
+$social-media-bg: rgba($white, 0);
